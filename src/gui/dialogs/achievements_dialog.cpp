@@ -121,11 +121,11 @@ void achievements_dialog::set_achievements_row()
 			}}
 		});
 
-		auto achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
+		auto& achievement_progress = newrow.find_widget<progress_bar>("achievement_progress");
 		if(in_progress) {
-			achievement_progress->set_percentage((ach.current_progress_ / double(ach.max_progress_)) * 100);
+			achievement_progress.set_percentage((ach.current_progress_ / double(ach.max_progress_)) * 100);
 		} else {
-			achievement_progress->set_visible(gui2::widget::visibility::invisible);
+			achievement_progress.set_visible(gui2::widget::visibility::invisible);
 		}
 
 		auto name = static_cast<styled_widget*>(newrow.find("name", false));
